@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Basic App The New Boston</string>
+    <string name="simple_counter">Simple Counter</string>
+    <string name="text_play">Text Play Example</string>
+    
+    <string name="logo">Moats Apps</string>
+    
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="action_settings">Settings</string>
+	<!-- Counter -->
+	<string name="display_value">Your total is 0</string>
+	<string name="add">Add One</string>
+	<string name="sub">Subtract One</string>
+	<!-- TextPlay -->
+	<string name="command">Type a Command</string>
+	<string name="command_button">Try a Comnmand</string>
+	<string name="toggle_button">Toggle Button</string>
+	<string name="results">Invalid</string>
+	<!-- Email -->
+	<string name="field1">Email address(es):</string>
+	<string name="field2">Hateful Intro:</string>
+	<string name="field3">Person\'s name</string>
+	<string name="field4">Stupid Things that this Person does</string>
+	<string name="field5">What you want to do to this person:</string>
+	<string name="field6">Hateful Outro:</string>
+	<string name="email">Send Email</string>
+</resources>

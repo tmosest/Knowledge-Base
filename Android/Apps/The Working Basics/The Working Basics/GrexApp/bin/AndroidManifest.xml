@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tylermoses.grexapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+         <activity
+            android:name=".Splash"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tylermoses.grexapp.SimpleAdder"
+            android:label="@string/simple_counter" >
+            <intent-filter>
+                <action android:name="com.tylermoses.grexapp.STARTINGPOINT" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Menu"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.tylermoses.grexapp.MENU" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AboutUs"
+            android:label="About Us" 
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="com.tylermoses.grexapp.ABOUT" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tylermoses.grexapp.Prefs"
+            android:label="Preferences" >
+            <intent-filter>
+                <action android:name="com.tylermoses.grexapp.PREFS" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TextPlay"
+            android:label="@string/text_play" >
+        </activity>
+         <activity
+            android:name=".Email"
+            android:label="@string/email" >
+        </activity>
+        <activity
+            android:name=".Camera"
+            android:label="Camera App" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Data"
+            android:label="Get Send Example Data" >
+        </activity>
+        <activity
+            android:name=".OpenedClass"
+            android:label="Get Send Example OpenedClass" >
+        </activity>
+         <activity
+            android:name=".GFX"
+            android:label="Graphics Example GFX" >
+        </activity>
+        <activity
+            android:name=".GFXSurface"
+            android:label="Graphics Example with Surface" >
+        </activity>
+        <activity
+            android:name=".SoundStuff"
+            android:label="Sound Pool the short sound player" >
+        </activity>
+        <activity
+            android:name=".Slider"
+            android:label="Slider Example" >
+        </activity>
+        <activity
+            android:name=".Tabs"
+            android:label="Slider Example" >
+        </activity>
+        <activity
+            android:name=".SimpleBrowser"
+            android:label="Slider Example" >
+        </activity>
+        <activity
+            android:name=".Flipper"
+            android:label="Flipper Example" >
+        </activity>
+        <activity
+            android:name=".SharedPrefs"
+            android:label="SharedPrefs Example" >
+        </activity>
+        <activity
+            android:name=".InternalData"
+            android:label="InternalData Example" >
+        </activity>
+        <activity
+            android:name=".ExternalData"
+            android:label="ExternalData Example" >
+        </activity>
+        <activity
+            android:name=".SQLLiteExample"
+            android:label="SQL Example" >
+        </activity>
+        <activity
+            android:name=".SQLView"
+            android:label="SQL View Example" >
+            <intent-filter>
+                <action android:name="com.tylermoses.grexapp.SQLView" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HotOrNot"
+            android:label="Hot or Not ?" >
+        </activity>
+         <activity
+            android:name=".Accelerate"
+            android:label="Accelerate Example" 
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ApproximatePi"
+            android:label="Approximate Pi Example" 
+             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.tylermoses.grexapp.ApproximatePi" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ApproximatePiAnimation"
+            android:label="Approximate Pi Example" 
+             android:screenOrientation="portrait">
+        </activity>
+         <activity
+            android:name=".BrickBreak"
+            android:label=" BrickBreak Example" 
+             android:screenOrientation="portrait">
+        </activity>
+    </application>
+
+</manifest>

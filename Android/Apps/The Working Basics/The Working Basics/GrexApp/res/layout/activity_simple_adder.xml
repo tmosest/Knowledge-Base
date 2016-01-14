@@ -1,0 +1,40 @@
+<!-- The main layout for Hello World -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ExtraText" >
+	<!-- Add 1 / Subtracts 1 Program -->
+    	<!-- Display -->
+    <TextView
+        android:id="@+id/tvDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/display_value"
+        android:textSize="45sp" />
+		<!-- Add Button -->
+     <Button
+         android:id="@+id/bAdd"
+         android:layout_width="250dp"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/bSub"
+         android:layout_below="@+id/tvDisplay"
+         android:gravity="center"
+         android:text="@string/add"
+         android:textSize="20sp" />
+		<!-- Subtract Button -->
+     <Button
+         android:id="@+id/bSub"
+         android:layout_width="250dp"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/bAdd"
+         android:layout_centerHorizontal="true"
+         android:text="@string/sub"
+         android:textSize="20sp" />
+
+	     
+</RelativeLayout>
+

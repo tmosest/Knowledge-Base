@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvpititle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Approximate Pi by Monty Carlo Method"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick how many points to use"
+        android:layout_gravity="center" />
+   
+    <EditText
+         android:id="@+id/etPiCases"
+    	android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:inputType="number"
+        />
+
+    <Button
+        android:id="@+id/bPi"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+</LinearLayout>
