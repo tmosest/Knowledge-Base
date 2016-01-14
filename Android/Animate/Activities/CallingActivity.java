@@ -1,5 +1,5 @@
 /*
-  This is a basic example of Animating two Activities
+  Activity Example: Shows how to animate from one activity to another by sliding horizontal or vertical.
 */
 
 import android.os.Bundle;
