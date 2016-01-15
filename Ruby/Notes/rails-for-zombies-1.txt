@@ -1,0 +1,504 @@
+==================================================================================
+Video 1
+==================================================================================
+
+Starting with tweets database table
+
+tweets
+1	blahblahbla	Ash
+2	zzzzzzzz	Bob
+3	Brains		Sue
+4	Huh		Billie
+
+A hash is an assosiative array
+
+b = {id:1, status="uhh", zombie="Bob"}
+
+keys 
+:id, :status, :zombie
+
+b[:status] => "uhh"
+
+etc...
+
+how to get something from the database
+Tweet.find(3)
+
+returns row 3 as an array
+
+now we use puts t[:id] etc to get the individual values
+
+Better way
+
+t.id
+t.zombie
+t.status
+
+Alternate Syntax!!!
+
+====
+CRUD
+====
+
+Create-
+
+t = Tweet.new
+t.status = "I <3 brains!"
+t.save
+
+	Better way to create
+	Tweet.create(status:"...", zombie: "Guy")
+
+Update-
+
+t = Tweet.find(3)
+t.zombie = "Lucy"
+t.save
+
+	t.attributes = {} for multiple 
+
+	or t.update () with no save 
+
+Read-
+Tweet.find(3)
+
+	Tweet.first , Tweet.all, Tweet.find(3,4,5)
+
+	Tweet.count
+
+	Tweet.order(:zombie)
+
+	Tweet.limit(1)
+
+	Tweet.where(zombie: 'ash')
+
+	chain for more complicated strings			
+
+Delete
+t = Tweet.find(3)
+t.destroy
+
+	or Tweet.find(3).destroy
+
+
+
+================================================================================
+Video 2
+================================================================================
+
+Rails Apps conssit of 4 layers the first is the model layer
+
+Models are how you interact with the data (database)
+
+Tweet in Tweet.find(3) only works because its a file in the model folder
+
+app/models/tweet.rb
+------Example
+class Tweet < ActiveRecord::Base
+
+end
+---end
+
+Right now we can create blank entries to fix this we do 
+
+app/models/tweet.rb
+------Example
+class Tweet < ActiveRecord::Base
+	validate_presence_of :status
+end
+---end
+
+Other examples:
+	validate_presence_of :status
+	validate_numicaluty_of :fingers
+	validate_uniquesness_of
+	validate_confirmation_of
+	validate_acceptance_of
+	validate_length_of
+	validate_format_of
+	validate_inclusion_of
+	validate_exclusion_of
+
+Better way
+	validates :status,
+		  presence: true,
+		  length: { minimum: 3 }
+
+
+=====
+Relationships
+=====
+
+we have tweets and zombies are a part but we are removind this
+and replacing it with a zombie_id.
+
+zombie_id will match the id in the zombies database that
+now holds more information about the zombies.
+
+app/models/tweet.rb
+------Example
+class Tweet < ActiveRecord::Base
+	belongs_to :zombie
+end
+---end
+
+Now look:
+
+	ash = Zombie.find(1)
+	t = Tweet.create(status: "", zombie: ash)
+
+	ash.tweets.count
+
+	ash.tweets
+
+All work,
+
+Also 
+
+	t = Tweet.find(5)
+	t.zombie
+	t.zombie.name
+
+
+======================================================================================
+Video 3
+=======================================================================================
+
+Next layer is the View
+
+The View is the visual representation of ruby
+
+View
+
+Models 
+
+Blank
+
+Blank
+
+zombie_twitter
+
+	app
+
+		views
+
+			zombies
+			tweetes
+				index.html.erb
+				show.html.erb
+
+index is all tweets and show is one tweet
+
+show.html.erb
+
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+	<header></header>
+	<% tweet = Tweet.find(1) %>
+	<h1><%= tweet.status %></h1>
+	<p>Posted By: <%= tweet.zombie.name %></p>	
+	</body>
+</html>
+
+====
+DRY: Dont repeat your self
+====
+
+Put the header and footers in the 
+
+/app/views/layouts/application.html.erb
+
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+	<header></header>
+	<%= yield %>
+</html>
+
+==
+create a link
+==
+
+<% tweet = Tweet.find(1) %>
+	<h1><%= tweet.status %></h1>
+	<p>Posted By: <%= link_to tweet.zombie.name, tweet.zombie %></p>	
+
+
+===
+List Tweets
+===
+app/view/tweets/index.html.erb
+<h1>Listing tweets</h1>
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+<% tweets = Tweet.all %>
+<% Tweets.each do |tweet| %>
+	<tr>
+		<td><%= link_to tweet.status, tweet %></td>
+		<td><%= link_to tweet.zombie.name, tweet.zombie %></td>
+		<td><%= link_to "Edit", edit_tweet_path(tweet) %></td>
+		<td><%= link_to "Destroy", tweet, method: :delete %></td>
+	</tr>
+<% end %>
+<% if tweets.siz == 0 %>
+	<em>No tweets found.</em>
+<% end %>
+</table>
+
+==
+URL Generator Method
+==
+
+....
+
+======================================================================================
+Video 4
+=======================================================================================
+
+Controllers are the brains of the application 
+
+Controls are models and views
+
+	View
+	
+	Model
+
+	Controllers
+
+	Blank
+
+
+Going back to our show.html.erb file
+notice that this is fishy our controller should be
+determing the id of the user and not just loading Tweet.find(1)
+
+=
+Ex
+=
+
+Request /tweets/1
+
+First goes to the controller tweets_controller.rb
+
+Then gets routed to show.html.erb
+
+Convention of Configuration
+
+/app/controllers/tweets_controller.rb
+
+class TweetsController < ApplicationController
+	def show
+				
+	end 
+end
+
+we move tweet.find(1) into the controller
+
+/app/controllers/tweets_controller.rb
+
+class TweetsController < ApplicationController
+	def show
+		@tweet = Tweet.find(1)
+		render action: 'status'		
+	end 
+end
+
+We now have to add an '@' to the front of each tweet in show to reference this global variable
+
+To go to any Tweet we change 
+
+	@tweet = Tweet.find(1)
+
+to 
+
+	@tweet = Tweet.find(params[:id])
+
+===
+Paramaterers
+===
+
+/tweets?status=im dead
+prarams = {status : 'im dead'}
+@tweet = Tweet.create(status: params[:status])
+
+/tweets?tweet[status]=im dead
+prarams = { tweet: {status : 'im dead'} }
+@tweet = Tweet.create(status: params[:tweet][:status])
+
+Alternate syntax
+@tweet = Tweet.create(params[:tweet])
+
+This above code is rotten need strong parameters
+
+
+params.require(:tweet).permit(:status)
+
+Strong parameters are only needed if createing or updating multiple attributes
+
+====
+Respond with XML or JSON
+====
+
+Request /tweets/1.js
+
+/app/controllers/tweets_controller.rb add the following in the mdiddle
+respond_to dp |format|
+	format.html
+	format.json {render json: @tweet}
+	format.xml {render xml: @tweet}
+end
+
+====
+Controller Actions
+====
+
+def index
+def show
+def new
+def edit
+def create
+def update
+def destroy
+
+/app/controllers/tweets_controller.rb
+
+def edit
+end 
+
+===
+Adding some simple auth.
+===
+
+def edit
+	@tweet = Tweet.find(params[:id])
+	if session[:zombie_id != @tweet.zombie_id
+		#flash[:notice] = "Sorry, you can't edit this tweet"	
+		redirect_to(tweets_path, notice: "You can't...")	
+	end
+end
+
+add if flash[:notice] to layouts/applications
+
+===
+More DRY
+===
+before_action :get_tweet, only[:edit, :update, :destroy]
+def get_tweet
+	@tweet = Tweet,find(params[:id])
+end
+
+and do the same thing for check_authorization
+
+===========
+Video 5
+===========
+
+Routes are the brains of the application 
+
+Routes are
+
+	View
+	
+	Model
+
+	Controllers
+
+	Routes
+
+Routes handle what contollers should be loaded and when.
+
+In order for all the link_to 's to work we need to write code
+in the routes folder
+
+config
+	routes.rb
+
+Rails uses standard restful routes
+
+perfect for apis
+
+===
+Custom Routes
+===
+
+Want localhost/new_tweet to render to 
+
+local/tweets/new
+
+to do this we alter the
+
+routes.rb file in the config folder
+
+
+ZombieTwitter::Application.routes.draw do
+	resourses :tweets
+	get '/new_tweet' => 'tweet#new'
+end
+
+end file
+
+====
+Named routes
+====
+
+localhost/all to ~/tweets
+
+
+routes.rb
+
+get '/all' => 'tweets#index', as 'all_tweets'
+
+end file 
+
+now link needs to be updates
+
+<%= link_to "All Tweets", all_tweets_path %>
+
+
+
+====
+Redirect
+====
+
+get '/all' => redirect("/tweets")
+
+===
+Roote Rule
+===
+
+root to: "tweets#index"
+
+===
+Route Parameters
+===
+
+tweets_controller.rb
+
+def index
+	if params[:zipcode]
+		@tweets = Tweet.where(zipcode: params[:zipcode])
+	else
+		@tweets = Tweet.all
+	end
+	respond_to do |format|
+		format.html #index.html.erb
+		format.xml {render xml: @tweets}
+	end
+end 
+
+end file
+
+In routing file
+
+get '/local_tweets/:zipcode' 
+	=> 'tweet#index', as: 'local_tweets'
+
+now a link to Tweets in 32828 would be
+
+<%= link_to "Tweets in 32828", local_tweets_path(3282) %>
