@@ -1,0 +1,406 @@
+==================================================================================
+Video 1: From the Ground Up
+==================================================================================
+
+-Install rails
+	+look it up for your system
+
+-Now rails will work in the command line
+
+rails help 
+
+will give you more infomation.
+
+-Lets create an app with 
+
+new MyApp
+
+-Move into it with
+
+cd MyApp
+
+-Now use rails help to find more commands
+
+- use rails server or rails s to run a server
+go to http://localhost:3000/ to see the test page
+
+- rails generate scaffold , to create a startinf piont
+
+ex: rails generate scaffold zombie name:string bio:text age:integer
+
+this will create several new userful files
+
+it will create a file for each MVCR
+
+===
+Introduction to DB Migration
+===
+
+db/migrate/2011070120207_create_zombie.rb
+
+class CreateZombies < ActiveRecord::Migration
+	def change
+		create_table :zombies do |t|
+			t.string :name
+			t.text :bio
+			t.integer :Age
+			t.timestamps
+		end
+	end
+end
+
+Migrations helps developers do databases upgrades without 
+messing up each other
+
+$ rake db:migrate
+
+have to do this first before we can see database
+
+
+===
+Console
+===
+rails console will allow you type in rails commands
+
+
+===
+Adding Columns
+===
+
+use rails g migration to add columns
+
+
+===================
+Video 2: Models Taste Like Chicken
+===================
+
+===
+Named Scope
+===
+apps/controllers/rotting_zombies_controller.rb
+class RottingZombiesController	< ApplicationController
+	def index
+		@rotting_zombies = Zombie.rotting
+	end
+end
+
+
+apps/models/zombies.rb
+class Zombie	< ActiveRecord::Base
+	scope :rotting, where(rotting: true)
+	scope :fresh , where("age < 20")	
+end
+
+===
+Callbacks
+===
+
+apps/models/zombies.rb
+class Zombie	< ActiveRecord::Base
+	before_save :make_rotting
+	def make_rotting
+	if age > 20
+		self.rotting = true	
+	end	
+end
+
+*WARNING returning false before a save will stop the save from
+happening 
+
+===
+All Callbacks
+===
+
+before_validation
+after_...
+
+before_save
+...
+
+before_create
+...
+
+before_update
+...
+
+before_destroy
+...
+
+===
+Remember Relationships
+===
+
+Remember before we had:
+A Tweet belongs to a Zombie
+belongs_to:zombie
+
+and A Zombie has many tweets
+has_many :tweets
+
+===
+HAS_ONE
+===
+
+-generate the model
+
+rails g model brain zombie_id:integer status:string flavor:string
+
+--creates migration and model
+
+need to add: 
+
+add.index :brains, :zombie_id
+
+:to the bottom of create_brains.rb to link the two tables proper.
+
+called foreign key index
+
+-Now need to add this to brain and zombie models
+	Brain belongs to Zombie
+	Zombie has one brain
+
+-If we destroy zombie brain stays
+
+so add to Zombie class 
+
+	has_one :brain, dependent: :destroy
+
+can change tons of stuff...
+
+read the documentation
+
+===
+Relationship "INCLUDE" Option
+===
+
+-Beware of n+1 queries
+
+-We need to add something to zombies_controller.rb
+
+	def index
+		@zombies = Zombie.includes(:brain).all
+
+-Now index.html.erb wont make multiple extra calls for no reason
+
+===
+HAS_MANY
+===
+
+-Think roles can have multiple ones
+
+- Need an intermediate table between Zombie and Role tables
+learners
+	Assignments :role_id belongs to Role
+	Assignments :zombie_id belongs to Zombie
+
+	Zombie has many Assignments
+	Role has many Assignments
+
+- Create migrations
+
+	db/..._create_assignments.rb
+
+	Class ...
+		def change
+			create_table :assignments do |t|
+				t.integer :zombie_id
+				t.integer :role_id
+			end
+			add_index :assignments, :zombie_id
+			add_index :assignments, :role_id
+		end
+	end
+
+	db/...create_roles.rb
+
+	create_table :assignments do |t|
+				t.string :title
+			end
+	end
+
+	models/zombie.rb
+
+	has_many :assignments
+	has_many :roles, through :assignments
+
+	models/role.rb
+
+	has_many :assignments
+
+	models/assignment.rb
+	
+	belongs_to :zombie
+	belongs_to :role
+	
+===================
+Video 3: REST
+===================
+
+REST is Representational State Transfer
+
+1) Resources (nouns) are addressable through URI
+
+2) GET, POSt, PUT, DELETE are standard methods
+
+Roy Fiedling PHD Dessertaiton
+
+Rails wasnt always RESTful
+
+Rails 1 started to fix its old issues
+
+Rails 2+ is restful and has a server request type for each action
+
+===
+Examples
+===
+
+Show user
+
+woule be a get
+
+Create user
+
+would be a post 
+
+Play Global Thermonuclear War
+
+woud be a post (create a new game)
+
+Process credit card 
+
+post 
+
+Logout
+
+delete a session
+
+===
+Text_field helper
+===
+
+<%= form_for(@zombie) do |f| %>
+	...
+		<%= f.text_field :name %>
+	<%= f.submit %>
+<% end %>
+
+Rails grabs information about the zombie if it already exits and if not sets to create new
+
+if  @zombie.name has validation errors then 
+	<div class="field_with_errors">
+		<input ... />
+	</div>
+
+The other default helper is f.label :name 
+
+we can use these to 
+
+===
+Input helpers
+===
+
+f.text_area :bio
+
+f.check_box :rotting
+
+f.radio_button
+
+f.select ...
+
+===
+Text input helpers
+===
+
+f.password_field :password
+f.number_field :price
+f.range_feild
+f.email_feild
+f.url_field
+f.telephone_field
+
+===
+Nested Routes
+===
+
+look at our routes.rb
+
+TwitterForZombies... do
+	resources :zombies
+	resources :tweets
+end
+
+This makes /tweets/2 to find a tweet and /tweets?zombie_id=4 to find all tweets
+
+Not very RESTful
+
+Lets fix this
+
+TwitterForZombies... do
+	resources :zombies do
+		resources :tweets
+	end
+end
+
+now  can do 
+
+/zombies/4/tweets/2
+/zombies/4/tweets
+
+===
+Updating the controller
+===
+
+Inside of tweets controller we need to 
+
+tweet_controller.rb
+
+before_filter :get_zombie
+def get_zombie
+	@zmobie = Zombie.find(params[:zombie_id])
+end
+def show
+	@tweet = @zombie.tweets.find(params)
+end
+
+
+===
+Partials
+===
+app/views/tweets/_form.html_erb
+
+partials start with an underscore and are something ?
+
+
+===
+View helpers
+===
+
+Rails 3 auto escapes input add "raw" to the start to fix this.
+
+Rails 2 needs an 'h' in fron to escape the text.
+
+===
+Additional View helpers
+===
+
+div_for tweet do
+
+end
+
+will create a div for that tweet variable each iteration we can then get this with
+
+dom_id(@tweet) to manipulate it with javascript
+
+
+===
+Additional View helpers 2 
+===
+
+<%= truncate("I need brains!", :length => 10) %>
+
+<%= truncate("I need brains!", :length => 10, :seperator => ' ') %>
+
+I see <%= pluralize(Zombie.count, "zombie") %>
+
+His name was <%= @zombie.name.titleize %> 
+
