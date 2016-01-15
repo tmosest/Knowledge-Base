@@ -1,0 +1,6 @@
+////////////////////////
+  Basic Pull Request
+////////////////////////
+git pull [remote] [branch]
+
+git pull origin master
