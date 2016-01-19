@@ -1,0 +1,107 @@
+#This is a tutorial on how to setup FTP on an AWS Linux server.
+#pictures can be found here: http://stackoverflow.com/questions/7052875/setting-up-ftp-on-amazon-cloud-server
+#This is still a work in progress maybe i need apache and mysql first....
+
+1) Connect to your AWS Linux Server via ssh (see connecting.txt for help)
+
+2) Install vsFTPd, by typing into the command prompt after connected: 
+          
+          sudo yum install vsftpd
+          
+3) Type y during the install when prompted with "Is this ok [y/d/N]"
+
+4) Now that we have installed vsftp we need to set up group 
+
+5) Log in to the AWS EC2 Management Console and select Security Groups from the navigation tree on the left. 
+
+6) Select the security group assigned to your EC2 instance. 
+
+7) Then select the Inbound tab, then click Edit:
+
+8) Add two Custom TCP Rules with port ranges 20-21 and 1024-1048. For Source, you can select 'Anywhere'. 
+
+(If you decide to set Source to your own IP address, be aware that your IP address might change if it is being assigned via DHCP.)
+
+9) Now back to the command prompt to edit vsftpd.config. Type:
+
+  sudo vi /etc/vsftpd/vsftpd.conf
+  
+10) This will open up the file in the Linux file editor called vi. Now that you are editing the file we need to update and add some stuff:
+
+11) Scroll with the keys or mouse wheel and find "anonymous_enable=YES" and change it to "anonymous_enable=NO" 
+
+  (You might need to press i before you can start typing)
+
+12) Now add the following to the bottom of the file: (Public IP is found in the EC2 Management Section of AWS)
+
+  pasv_enable=YES
+  pasv_min_port=1024
+  pasv_max_port=1048
+  pasv_address=<Public IP of your instance> 
+  local_root=/var/www/html/
+  
+13) Now press the ESC key to stop editing the file. Then press :wq ENTER to update the file with your changes.
+
+14) Now restart vsFTPd with the following command:
+
+  sudo /etc/init.d/vsftpd restart
+  
+14.5) If the command above doesn't work try:
+
+  sudo /sbin/service vsftpd restart
+  
+15) Now we need to create an ftp user
+
+  (Optional: use vi to open /etc/vsftpd/user_list to see the list of reserved names)
+  
+16) Now we create a new user named username and set their password by typing the next two commands:
+
+  sudo adduser username
+  sudo passwd username
+
+17) sudo passwd username will make a password prompt appear, type in the new password twice and cont.
+  
+  (Note: you will not see any characters appear in the command prompt as you type your password, this is normal)
+  
+18) Now you might want to restrict your ftp client to certain folders.
+
+19) Edit your vsftpd conf file again by typing:
+
+  sudo vi /etc/vsftpd/vsftpd.conf
+  
+20) Un-comment out the line (Remove the #):
+
+  chroot_local_user=YES
+  
+21) Save the file again (press ESC then :wq ENTER)
+  
+22) Restart the vsftpd server again like so:
+
+  sudo /etc/init.d/vsftpd restart
+  
+Appendix A: Surviving a reboot
+
+sftpd doesn't automatically start when your server boots. If you're like me, that means that after rebooting your EC2 instance, 
+you'll feel a moment of terror when FTP seems to be broken - but in reality, it's just not running!. 
+Here's a handy way to fix that:
+
+> sudo chkconfig --level 345 vsftpd on
+
+Alternatively, if you are using redhat, another way to manage your services is by using this nifty graphic user interface 
+to control which services should automatically start:
+
+>  sudo ntsysv
+
+Now vsftpd will automatically start up when your server boots up.
+
+Appendix B: Changing a user's FTP home directory
+You might want to create a user and restrict their FTP access to a specific folder, such as /var/www.
+In order to do this, you'll need to change the user's default home directory:
+
+> sudo usermod -d /var/www/ username
+In this specific example, it's typical to give the user permissions to the 'www' group, which is often associated with the
+/var/www folder:
+
+> sudo usermod -a -G www username
+
+
