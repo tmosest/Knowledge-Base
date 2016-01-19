@@ -1,0 +1,6 @@
+To open my AWS Instance I:
+
+1)	Open Git Bash to the folder that contains my .pem file that I generated with my instance.
+2)	Using Git command prompt I use chmod 600 my.pem to set the correct permissions on my .pem file
+3)	I then type in “ssh –v –i my.pem ec2-user@my-instance-dns” into Git command prompt to connect
+
