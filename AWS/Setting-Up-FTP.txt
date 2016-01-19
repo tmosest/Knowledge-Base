@@ -1,5 +1,6 @@
 #This is a tutorial on how to setup FTP on an AWS Linux server.
 #pictures can be found here: http://stackoverflow.com/questions/7052875/setting-up-ftp-on-amazon-cloud-server
+#Another resource: https://gist.github.com/gunjanpatel/37d306cd1585ece1179b
 #This is still a work in progress maybe i need apache and mysql first....
 #I got this working once, now I need to do this a couple of times to be good at this.
 
