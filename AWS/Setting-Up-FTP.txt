@@ -45,6 +45,7 @@ Before Attempting this please setup Apache or anther server type atleast. (See s
   pasv_max_port=1048
   pasv_address=<Public IP of your instance> 
   local_root=/var/www/html/
+  [or local_root=/var/www/ depending on how deep they need to be. The only issue might be that a pull request will get more images          than needed]
   
 13) Now press the ESC key to stop editing the file. Then press :wq ENTER to update the file with your changes.
 
@@ -105,9 +106,22 @@ You might want to create a user and restrict their FTP access to a specific fold
 In order to do this, you'll need to change the user's default home directory:
 
 > sudo usermod -d /var/www/ username
+
+=======================================================
+If you followed the apache tutorial just use the code below. You don't need usermod -d /var/www/ username unless you want to set to a custom folder.
+=======================================================
+
 In this specific example, it's typical to give the user permissions to the 'www' group, which is often associated with the
 /var/www folder:
 
 > sudo usermod -a -G www username
 
+=================================================================
+Setting up ftp in DreamWeaver
+=================================================================
 
+1) Open Dream Weaver
+
+2) In the top menu click Site -> New Site or Site -> Manage Sites
+
+3) .....
