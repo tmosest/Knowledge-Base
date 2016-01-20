@@ -1,0 +1,45 @@
+==================================================================
+Easy way to add Google Play to an existing project
+ [If you are currently using Eclipse throw it out the window and get Android Studio]
+==================================================================
+
+1) Open the build.gradle file inside your application module directory. THE ONE INSIDE THE APP FOLDER
+
+2) Add new dependecies
+
+  apply plugin: 'com.android.application'
+    ...
+
+    dependencies {
+        compile 'com.google.android.gms:play-services:8.4.0'
+    }
+    
+3) Check out this link to determine what you'll need
+
+https://developers.google.com/android/guides/setup
+
+Here are common ones:
+
+Google+	com.google.android.gms:play-services-plus:8.4.0
+Google Account Login	com.google.android.gms:play-services-auth:8.4.0
+Google Actions, Base Client Library	com.google.android.gms:play-services-base:8.4.0
+Google Address API	com.google.android.gms:play-services-identity:8.4.0
+Google App Indexing	com.google.android.gms:play-services-appindexing:8.4.0
+Google App Invites	com.google.android.gms:play-services-appinvite:8.4.0
+Google Analytics	com.google.android.gms:play-services-analytics:8.4.0
+Google Cast	com.google.android.gms:play-services-cast:8.4.0
+Google Cloud Messaging	com.google.android.gms:play-services-gcm:8.4.0
+Google Drive	com.google.android.gms:play-services-drive:8.4.0
+Google Fit	com.google.android.gms:play-services-fitness:8.4.0
+Google Location, Activity Recognition, and Places	com.google.android.gms:play-services-location:8.4.0
+Google Maps	com.google.android.gms:play-services-maps:8.4.0
+Google Mobile Ads	com.google.android.gms:play-services-ads:8.4.0
+Mobile Vision	com.google.android.gms:play-services-vision:8.4.0
+Google Nearby	com.google.android.gms:play-services-nearby:8.4.0
+Google Panorama Viewer	com.google.android.gms:play-services-panorama:8.4.0
+Google Play Game services	com.google.android.gms:play-services-games:8.4.0
+SafetyNet	com.google.android.gms:play-services-safetynet:8.4.0
+Google Wallet	com.google.android.gms:play-services-wallet:8.4.0
+Android Wear	com.google.android.gms:play-services-wearable:8.4.0
+  
+  
