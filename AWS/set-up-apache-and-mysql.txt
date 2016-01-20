@@ -1,0 +1,133 @@
+==============================================================
+See the file on connecting if you don't know how to connect.
+==============================================================
+
+1) First we need to update any existing software, after connecting to your aws istance through the command prompt type the following.
+
+  sudo yum update -y
+  
+2) After that we use yum install to setup all the software we will need.
+
+  sudo yum install -y httpd24 php56 mysql55-server php56-mysqlnd
+  
+3) Start the Apache web server.
+  
+   sudo service httpd start
+  
+4) You should see a green [ OK ]. Now we add Apache to the boot up files by typing.
+
+  sudo chkconfig httpd on
+  
+5) Now you can check that it was added to the start up with:
+
+  chkconfig --list httpd
+  
+  [You want to see 1:off 2:on 2:on 3:on 4:on 5:on 6:off]
+  
+6) Check that it worked by going to the public ip address of your AWS instance [found on the aws website in your instance info] in
+    your web browser. You should see an Amazon Linux Test Page  
+    
+  [Apache will show all files in you /var/www/html folder]
+  
+====================================
+Set File Permissions
+====================================
+
+1) Add the www group to your instance.
+  
+  sudo groupadd www
+  
+2) Add your user (in this case, ec2-user) to the www group.
+
+  sudo usermod -a -G www ec2-user
+  
+3) Log out and then log back in again, and verify your membership in the www group.
+
+  exit
+  
+4) After logging back in use below to check your permissions:
+
+  groups
+  
+  [Should return: ec2-user wheel www]
+  
+5) Change the group ownership of /var/www and its contents to the www group.
+
+  sudo chown -R root:www /var/www
+  
+6) Change the directory permissions of /var/www and its subdirectories to add group write permissions 
+    and to set the group ID on future subdirectories.
+    
+  sudo chmod 2775 /var/www
+  
+  find /var/www -type d -exec sudo chmod 2775 {} +
+  
+7) Recursively change the file permissions of /var/www and its subdirectories to add group write permissions.
+
+  find /var/www -type f -exec sudo chmod 0664 {} +
+  
+====================================
+Test Apache
+====================================
+
+1) Create a simple PHP file in the Apache document root.
+
+  echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+  
+2) In a web browser, enter the URL of the file you just created. 
+   This URL is the public DNS address of your instance followed by a forward slash and the file name. For example:
+   
+   http://my.public.dns.amazonaws.com/phpinfo.php
+   
+3) Delete the phpinfo.php file. Type the following into a command prompt.
+
+  rm /var/www/html/phpinfo.php
+
+========================================
+Secure MySQL
+========================================
+
+1) Start the MySQL server so that you can run mysql_secure_installation.
+
+  sudo service mysqld start
+  
+2) Run mysql_secure_installation.
+
+  sudo mysql_secure_installation
+  
+3) When prompted for root password enter it (if set) if not press ENTER.
+
+4) Type Y to set a new password. Set it and then type y for the next questions.
+
+4.5) Either stop or mysql or add it to the start up files depending on what you need.
+
+  sudo service mysqld stop
+  
+  sudo chkconfig mysqld on
+  
+===============================================
+Setup phpMyAdmin
+===============================================
+1) Enable the Extra Packages for Enterprise Linux (EPEL) repository from the Fedora project on your instance.
+
+  sudo yum-config-manager --enable epel
+  
+2) Install the phpMyAdmin package.
+
+   sudo yum install -y phpMyAdmin
+   
+3) Configure your phpMyAdmin installation to allow access from your local machine. 
+    By default, phpMyAdmin only allows access from the server that it is running on, 
+    which is not very useful because Amazon Linux does not include a web browser.
+    
+    [If you need your own ip address Google it or user whatsmyip.com]
+    
+    sudo sed -i -e 's/127.0.0.1/your_ip_address/g' /etc/httpd/conf.d/phpMyAdmin.conf
+    
+4) Restart the Apache web server to pick up the new configuration.
+
+  sudo service httpd restart
+  
+5) In a web browser, enter the URL of your phpMyAdmin installation.
+
+  http://my.public.dns.amazonaws.com/phpmyadmin or http://my_amazon_public_ip/phpMyAdmin
