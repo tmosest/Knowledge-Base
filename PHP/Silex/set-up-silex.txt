@@ -23,3 +23,5 @@ Silex is a nice PHP library built on top of Symphony. Learn More: http://silex.s
 ===================================================
 Silex is done create a bootrap file to test it
 =================================================== 
+Greate Tutorial on setting it up:
+http://www.sitepoint.com/introduction-silex-symfony-micro-framework/
