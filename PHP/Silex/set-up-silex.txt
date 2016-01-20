@@ -1,0 +1,25 @@
+======================================================================================================================================
+This is a tutorial that goes through the steps I needed to take to add Silex to an AWS Instance
+Silex is a nice PHP library built on top of Symphony. Learn More: http://silex.sensiolabs.org/doc/usage.html#bootstrap
+======================================================================================================================================
+
+1) Connect to AWS Instance via Git Bash Command Prompt [see AWS section to learn this]
+
+2) Now you need to navigate to the correct directory s.t. (use the cd command to move folders)
+
+|  <- composer.json
+|  <- composer.lock
+|  <- vendor
+|  <- web -> Index.html
+
+3) Once we are inside that folder (/var/www) in this example. We install composer with
+
+  curl -sS https://getcomposer.org/installer | php
+  
+4) Using the composer we download Silex with:
+
+  php composer.phar require silex/silex "~1.3"
+  
+===================================================
+Silex is done create a bootrap file to test it
+=================================================== 
