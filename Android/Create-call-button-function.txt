@@ -1,0 +1,13 @@
+===========================================================
+Things neccessary to add call functionallity to an app
+===========================================================
+
+1) Need to add a new permission:
+
+  <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>   
+  
+2) The intent you'll need within the Activity:
+
+  Intent callIntent = new Intent(Intent.ACTION_CALL);
+  callIntent.setData(Uri.parse("tel:123456789"));
+  startActivity(callIntent);
