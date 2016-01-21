@@ -1,0 +1,41 @@
+====================================================================================================
+Simple Tutorial on how to setup url rewrites for Silex on a Linux AWS Server
+
+The end result is changing www.example.com/index.php/anything to www.example.com/anything
+=====================================================================================================
+
+1) The first step is to allow rewrites in your AWS instance. 
+  [This tutorial assumes that you have setup Apache and FTP as described in AWS folder]
+
+2) After you have ssh into your instance. [see aws ssh tutorial] 
+  You need to find the file that we will edit type below into command prompt:
+
+  sudo vi /etc/httpd/conf/httpd.conf
+  
+3) This will open your httpd.conf file using vi. We need now need to add rewrite rules. 
+  Look for: 
+    DocumentRoot "/var/www/html"
+      [It might be in multiple places]
+        and update:
+          AllowOverride None
+            to:
+              AllowOverride All
+              
+4) Now Apache will allow your htaccess file to make changes to the url.
+
+5) Open notepad and paste:
+
+  <IfModule mod_rewrite.c>
+    Options -MultiViews
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    RewriteCond %{THE_REQUEST} ^(GET|HEAD)\ /web/
+    RewriteRule ^(.*)$ /$1 [L,R=301]
+  </IfModule>
+  
+  into a blank file. Save as .htacces and make sure all is selected instead of .txt
+  
+6) Now upload that file via ftp to /var/www/html and you are good to go! :)         
