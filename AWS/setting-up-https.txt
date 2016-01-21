@@ -1,0 +1,44 @@
+===================================================================================================================
+Tutorial on setting up HTTPS 
+===================================================================================================================
+
+I) Method 1: Self Signing
+
+  1) Connect to you AWS instance [see tutorial on this if neccessary] then check to see if httpd is running with:
+  
+    sudo service httpd status
+    
+  1.5) If its not running start it with:
+  
+    sudo service httpd start
+    
+  2) Update all software with:
+  
+    sudo yum update -y
+    
+  3) Now that your instance is current, add SSL/TLS support by installing the Apache module mod_ssl:
+    
+    sudo yum install -y mod24_ssl
+    
+  [ We now have 3 new files 
+  
+      1) /etc/httpd/conf.d/ssl.conf : The configuration file for mod_ssl. 
+      It contains "directives" telling Apache where to find encryption keys and certificates, 
+      which SSL/TLS protocols to allow, and what encryption algorithms to use.
+      
+      2) /etc/pki/tls/private/localhost.key : An automatically generated, 
+      2048-bit RSA private key for your Amazon EC2 host. During installation, 
+      OpenSSL used this key to generate a self-signed host certificate, 
+      and you can also use it later to generate a certificate signing request (CSR) 
+      to submit to a certificate authority (CA).
+      
+      3) /etc/pki/tls/certs/localhost.crt : An automatically generated, 
+      self-signed X.509 certificate for your server host. This certificate is useful for 
+      testing that Apache is properly set up to use SSL/TLS.
+  ]
+  
+  4) Now we restart Apache
+  
+    sudo service httpd restart
+    
+  5) If you browser times out you need to add HTTPS to the Security Group on your AWS Instance.
