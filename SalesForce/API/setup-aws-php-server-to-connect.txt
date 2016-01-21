@@ -1,0 +1,42 @@
+===============================================================================================
+This tutorial shows how to start making Sales Force API calls from an AWS LAMP Server.
+
+[LAMP = Linux Apache MySQL PHP]
+================================================================================================
+
+1) Determine If you need to install php curl.
+
+-One way to do this is to connect to your AWS instance via ssh and then attempt:
+  
+  curl http://www.google.com
+  
+  [If you get back some HTML life is good to go :), If not go cry because I can't help you.]
+  
+-Another way is to open create a php file with the following and then open it in your browser.
+
+<?php
+      if (in_array ('curl', get_loaded_extensions())) {
+                return true;
+            }
+            else {
+                return false;
+            }
+			}
+		
+			if (_iscurlsupported()) {
+					echo "cURL is supported\n";
+			}
+			else {
+					echo "cURL isn't supported\n";
+			}
+?>
+
+  [It should echo out "cURL is supported"]
+  
+2) Now you need to get the Force.com-Toolkit-for-PHP. Open Git Bash or Terminal in the folder you want to download it to and do:
+
+  git clone https://github.com/developerforce/Force.com-Toolkit-for-PHP.git
+
+  [Warning: you will need git to do this.]
+  
+3) Now you have copy saved to your local machine. 
