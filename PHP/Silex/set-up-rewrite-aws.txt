@@ -20,6 +20,7 @@ The end result is changing www.example.com/index.php/anything to www.example.com
           AllowOverride None
             to:
               AllowOverride All
+              [Make sure this is within <Directory "/var/www/html">]
               
 4) Now Apache will allow your htaccess file to make changes to the url.
 
@@ -38,4 +39,7 @@ The end result is changing www.example.com/index.php/anything to www.example.com
   
   into a blank file. Save as .htacces and make sure all is selected instead of .txt
   
-6) Now upload that file via ftp to /var/www/html and you are good to go! :)         
+6) Now upload that file via ftp to /var/www/html and restart httpd with the command below and you are good to go! :)
+   
+   sudo service httpd restart
+
