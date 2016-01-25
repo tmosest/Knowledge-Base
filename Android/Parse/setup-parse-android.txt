@@ -8,3 +8,5 @@ This is a tutorial on setting up Parse within an Existing Android App
 3) The build.gradle should be (Module: app)
 
 4) Other than that the tutorial from Parse seems good.
+
+The Parse Tutorial Sucks I'm making a new one!!!! Don't for app:name in Manifest Application tag!!!
