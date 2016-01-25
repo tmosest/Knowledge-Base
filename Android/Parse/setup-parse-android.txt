@@ -1,0 +1,10 @@
+========================================================================================================================================
+This is a tutorial on setting up Parse within an Existing Android App
+========================================================================================================================================
+1) Go to: https://parse.com/apps/quickstart#parse_data/mobile/android/native/existing and follow the instructions.
+
+2) The SDK should be downloaded to your porjects Library Folder.
+
+3) The build.gradle should be (Module: app)
+
+4) Other than that the tutorial from Parse seems good.
