@@ -45,7 +45,7 @@ public class ParseApplication extends Application {
 
 Replacing the two keys in the initialize function with your own unique keys.
 
-5) Finally we alter the Android Manifest File and add android:name=".ParseApplication" as shown below. It should work now.
+5) Finally we alter the Android Manifest File and add android:name=".ParseApplication" as shown below, and add some meta data
 
  <application
         android:name=".ParseApplication"
@@ -54,3 +54,9 @@ Replacing the two keys in the initialize function with your own unique keys.
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="parse_key" />
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="consumer_key" />
