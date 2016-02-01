@@ -1,0 +1,5 @@
+If you didn't forget to remove the default padding then you need to add app:contentInsetStart="0dp" to the Toolbar aka
+
+ <android.support.v7.widget.Toolbar
+            app:contentInsetStart="0dp"
+            ....
