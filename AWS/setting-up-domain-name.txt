@@ -1,0 +1,45 @@
+========================================================================================================
+AWS : Setting up a domain name.
+========================================================================================================
+
+1) Domain was purcashed via AWS Route 53
+
+2) Route 53 auto generated hosted zones
+
+3) It seems like AWS also generated me a VPC (Virtual Private Cloud)
+
+4) Open AWS consol : https://console.aws.amazon.com/
+
+5) Open VPC 
+
+6) Open Running VPC
+
+7) Click Elastic Ip's
+
+8) Click on the one created by Route 53 then click Actions -> Associate Address.
+
+9) Assign it to the instance that you would like your site running on.
+
+10) Copy the elastic address
+
+11) Open route 53
+
+12) Hosted zones
+
+13) Your Domain Name 
+
+14) Create Record
+
+	name  =  (leave blank)
+	type  =  A - IPv4 address
+	value =  The Elastic Ip Address you copied
+
+15) Now example.com will open to your instance. To get www.example.com we add another record with:
+
+	name = www
+	type = A - IPv4 address
+	value =  The Elastic Ip Address you copied
+
+16) Now www.example.com will work :) 
+
+
