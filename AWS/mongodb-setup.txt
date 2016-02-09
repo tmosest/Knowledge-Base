@@ -1,0 +1,152 @@
+=================================================================================================================
+AWS: Adding Mongo DB to an AWS EC2 Instance
+=================================================================================================================
+
+Warning: This tutrial assumes that you have a LAMP AWS EC2 setup and have some familiarity with it.
+
+//USerful Resource: http://www.thegeekstuff.com/2013/01/install-mongodb/
+
+I) Installing MongoDB on your AWS EC2 Instance
+
+1) ssh into your AWS instance [see connecting section]
+
+2) We need to add 10gen to repository with:
+
+	sudo vi /etc/yum.repos.d/10gen.repo
+
+3) This will probably create a new file type i to start edting and add the following:
+
+	[10gen]
+	name=10gen Repository
+	baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
+	gpgcheck=0
+	enabled=1
+
+4) Hit ESC then type :wq
+
+5) Now type the following to check it:
+
+	sudo yum info mongo-10gen
+
+6) Now lets download MongoDB with 
+
+	sudo yum install mongo-10gen mongo-10gen-server
+
+7) Type y when asked to.
+
+8) Verify that your config file was generated with:
+
+	cat /etc/mongod.conf
+
+9) Above file should include:
+
+	logpath=/var/log/mongo/mongod.log
+	logappend=true
+	fork = true
+	dbpath=/var/lib/mongo
+	pidfilepath = /var/run/mongodb/mongod.pid
+
+10) Start the server with:
+	
+	sudo service mongod start
+
+11) Now we can play around with MongoBD. Type the following to access the database,
+
+	mongo
+
+12) This should open the MongoDB shell. Now lets add a test database with:
+
+	 > doc1 = { name : "ramesh" };
+
+	 > db.sites.insert( doc1 );	
+
+13) This will insert a Mongo Collection called "sites". To test the insert type:
+
+	
+	> db.sites.find()
+
+14) Should return:
+
+	{ "_id" : ObjectId("50f72809a8e3c7a3aba2bf15"), "name" : "ramesh" }
+
+	
+	[OR something similar]
+
+15) To exit Mongo Shell type exit and press enter.
+
+===================================================================================================================
+
+Now we have a MongoDB but no way to actuall call it. Lets set up our PHP environment to work.
+
+
+II) Setting up MongoDB to work with PHP
+
+1) Type in the following to get some of the things that we will need.
+
+	sudo yum install php-pear php56-devel gcc make openssl-devel pcre-devel
+
+2) Type y as needed to install.
+
+3) Now we need to install mongo driver with:
+
+	sudo pecl install mongo
+
+3) Now we edit our php ini file to add mongo.so :
+
+	sudo vi /etc/php.d/mongo.ini
+
+4) Type i and add
+	
+	extension=mongo.so
+
+5) ESC then type :wq Enter
+
+6) Restart Apache with:
+	
+	sudo service httpd restart
+
+6) In theory this should be good to go. echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+
+6.5) If you cant echo the above because of permissions run the following again:
+	
+	sudo chown -R root:www /var/www
+	
+	sudo chmod 2775 /var/www
+
+	find /var/www -type d -exec sudo chmod 2775 {} +
+	
+	find /var/www -type f -exec sudo chmod 0664 {} +
+
+7) View your phpinfo.php file at publicIPAddress/phpinfo.php you should now see a MONGO section.
+
+8) Remove the phpinfo file with:
+
+	rm /var/www/html/phpinfo.php
+
+9) Now this should be good to go lets test this with the following php code:
+
+	<?php
+
+		// connect
+		$m = new Mongo();
+		
+		if($m) {
+			$db = $m->test;
+			
+			
+			$collection = $db->sites;
+			
+			$cursor = $collection->find();
+			return json_encode(iterator_to_array($cursor));
+		} else {
+			return 'Not Connected.';
+		}		
+
+		?>
+
+Should return {"56abbbd79dd27134e0280ccd":{"_id":{"$id":"56abbbd79dd27134e0280ccd"},"name":"ramesh"}} or the test collection that we made earlier.
+
+
+
+
+
