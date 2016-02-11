@@ -6,3 +6,11 @@ ini_set("soap.wsdl_cache_enabled", "0");
 
 
 in your PHP File before you call your WSDL file to load the current one!!!
+
+
+Example:
+
+$mySforceConnection = new SforceEnterpriseClient();
+		ini_set("soap.wsdl_cache_enabled", "0"); //Amazing hack to not cache enterprise file
+		$mySforceConnection->createConnection("sfapi/soapclient/enterprise.wsdl.xml");
+		$login = $mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
