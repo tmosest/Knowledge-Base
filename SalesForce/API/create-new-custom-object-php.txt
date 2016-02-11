@@ -1,0 +1,41 @@
+<?php
+require_once('soapclient/SforcePartnerClient.php');
+require_once('soapclient/SforceMetadataClient.php');
+
+try {
+    $mySforceConnection = new SforcePartnerClient();
+    $mySoapClient = $mySforceConnection->createConnection('soapclient/Partnetwsdl.xml');
+    $loginResult = $mySforceConnection->login('xxxx@xx.com', 'cc20127B8fw0x92YerGiV4zak5ucMc');
+    
+    $myMetadataConnection = new SforceMetadataClient('soapclient./metadata.xml', $loginResult, $mySforceConnection);
+ 
+//Create object
+    $customObject = new SforceCustomObject();
+    $customObject->fullName = 'CustomObjFromPHP__c';
+    $customObject->deploymentStatus = DEPLOYMENT_STATUS_DEPLOYED;
+
+    $customObject->setDescription("A description");
+    $customObject->setEnableActivities(true);
+    $customObject->setEnableDivisions(false);
+    $customObject->setEnableHistory(true);
+    $customObject->setEnableReports(true);
+    $customObject->setHousehold(false);
+    $customObject->setLabel("My Custom Obj from PHP");
+    $customField = new SforceCustomField();
+    $customField->setFullName('MyCustomFieldb__c');
+    $customField->setDescription('Description of New Field');
+    $customField->setLabel('My Custom Field Label');
+    $customField->setType('Text');
+        
+    $customObject->nameField = $customField;
+    
+    $customObject->pluralLabel = 'My Custom Objs from PHP';
+    $customObject->sharingModel = SHARING_MODEL_READWRITE;
+    print_r($myMetadataConnection->create($customObject));
+ 
+} catch (Exception $e) {
+    echo $myMetadataConnection->getLastRequest();
+    echo $e->faultstring;
+}
+
+?>
