@@ -1,0 +1,8 @@
+If you can't access custom objects after updating your WSDL file then youre cacheing it.
+
+Add
+
+ini_set("soap.wsdl_cache_enabled", "0"); 
+
+
+in your PHP File before you call your WSDL file to load the current one!!!
