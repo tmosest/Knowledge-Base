@@ -1,0 +1,14 @@
+Updating Warpzit's answer for Android Studio 1.3.2 (differences in bold)
+
+1) First get latest volley with git. (git clone https://android.googlesource.com/platform/frameworks/volley)
+2) In your current project (android studio) click [file] --> [New]--> [New Module].
+3) Now select [Import Gradle Project], Click Next
+4) Now select the directory where you downloaded Volley to.
+5) Now Android studio might guide you to do the rest but continue guide to verify that everything works correct
+6) Open settings.gradle (find in root) and add (or verify this is included):
+
+include ':app', ':volley'
+
+Now go to your build.gradle in your project and add the dependency:
+
+compile project(":volley")
