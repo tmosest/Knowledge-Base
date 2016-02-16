@@ -1,0 +1,37 @@
+private class SyncIncoData extends AsyncTask<String, String, String> {
+	ProgressBar pb;
+	ProgressBar pbar;
+
+	@Override
+	protected String doInBackground(String... urls) {
+		for (int i = 0; i <= 100; i++) {
+			publishProgress(i);
+		}
+		return null;
+	}
+
+	@Override
+	protected void onPreExecute() {
+
+		super.onPreExecute();
+
+		pb = (ProgressBar) findViewById(R.id.progressBarsync4);
+		pb.setVisibility(View.VISIBLE);
+
+	}
+
+	@Override
+	protected void onPostExecute(String result) {
+
+		pb = (ProgressBar) findViewById(R.id.progressBarsync4);
+		pb.setVisibility(View.INVISIBLE);
+
+	}
+
+	@Override
+	protected void onProgressUpdate(String... values) {
+		pbar = (ProgressBar) findViewById(R.id.progressBarpbar);
+		pbar.setProgress(Integer.parseInt(values[0]));
+		super.onProgressUpdate(values);
+	}
+}
