@@ -1,0 +1,17 @@
+==========================================
+When drawing a Chart with Chart.js inside a Bootstrap Modal with responsive chart. The chart will not appear until
+rezised, fix t with the following hack.
+==========================================
+
+$('#modal').on('shown.bs.modal', function (event) {
+  $.getJSON(http://whatever.com/file.js, function( data ) {
+    var ctx = document.getElementById("heightChart").getContext("2d");
+    window.myNewChart = new Chart(ctx).StackedBar(data,  {
+      responsive : true,
+      animation: true,
+      showScale: true,
+      multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
+    });
+
+  });
+});
