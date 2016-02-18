@@ -1,0 +1,17 @@
+$app->match('/export', function() use($app){
+  	$sql = 'SELECT * FROM partial_customers';
+		$records = $app['db']->fetchAll($sql);
+
+		header("Content-Type: text/csv");
+		header("Content-Disposition: attachment; filename=partial_customers.csv");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+
+		$output = fopen("php://output", "w");
+
+		foreach ($records as $row)
+			fputcsv($output, $row, ',');
+
+		fclose($output);
+		exit();
+	})->bind('dump');
