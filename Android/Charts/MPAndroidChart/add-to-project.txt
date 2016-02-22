@@ -1,0 +1,9 @@
+Paste the following into your build.gradle
+
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.2'
+}
