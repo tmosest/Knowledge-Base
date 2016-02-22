@@ -1,0 +1,2 @@
+String grades;
+for(char grade : grades)   { }
