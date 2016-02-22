@@ -1,0 +1,22 @@
+<?php
+/**
+
+  * Plugin Name: 
+
+  * Plugin URI: 
+
+  * Description: 
+
+  * Version: 
+
+  * Author: 
+
+  * License: 
+
+  */
+  
+  defined('ABSPATH') or die("You didn't say the magic word"); //Keeping out those pesky kids!
+  
+  
+  
+?>
