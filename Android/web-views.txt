@@ -1,0 +1,3 @@
+ wv = (WebView) findViewById(R.id.wvThings);
+        wv.getSettings().setBuiltInZoomControls(true);
+        wv.loadUrl("http://www.google.com");
