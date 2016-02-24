@@ -1,0 +1,7 @@
+WebView vistaWeb = (WebView) findViewById(R.id.webview);
+vistaWeb.setWebChromeClient(new MyCustomChromeClient(this));
+vistaWeb.setWebViewClient(new MyCustomWebViewClient(this));
+vistaWeb.clearCache(true);
+vistaWeb.clearHistory();
+vistaWeb.getSettings().setJavaScriptEnabled(true);
+vistaWeb.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
