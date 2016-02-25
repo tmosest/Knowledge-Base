@@ -1,0 +1,30 @@
+/**
+ * Created by moses on 2/24/16.
+ */
+@ParseClassName("Schedule")
+public class Schedule extends ParseObject {
+    public String getAgenda() {
+        return getString("agenda");
+    }
+    public String getDate() {
+        return getString("date");
+    }
+    public String getAgendaName() {
+        return getString("agendaName");
+    }
+    public String getTitle() {
+        return getString("title");
+    }
+    public String getDescription() {
+        return getString("description");
+    }
+    public String getDescriptionMore() {
+        return getString("descriptionMore");
+    }
+    public String getTime() {
+        return getString("time");
+    }
+    public static ParseQuery<Schedule> getQuery() {
+        return ParseQuery.getQuery(Schedule.class);
+    }
+}
