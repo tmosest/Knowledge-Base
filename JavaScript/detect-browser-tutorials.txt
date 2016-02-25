@@ -23,3 +23,6 @@ if(isIOSChrome){
 } else { 
    // not Google Chrome 
 }
+
+Another great example of both:
+http://jsfiddle.net/ChristianL/AVyND/
