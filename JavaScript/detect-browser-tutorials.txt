@@ -1,0 +1,3 @@
+Great example on this for later.
+
+http://www.javascriptkit.com/javatutors/navigator.shtml
