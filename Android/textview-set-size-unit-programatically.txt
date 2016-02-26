@@ -1,0 +1,1 @@
+text.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
