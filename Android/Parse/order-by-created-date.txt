@@ -1,0 +1,10 @@
+var GameScore = Parse.Object.extend("GameScore");
+var query = new Parse.Query(GameScore);
+
+query.ascending("createdAt");
+
+query.find({
+  success: function(results) {
+    alert("Successfully retrieved " + results.length + " scores.");
+  }
+});
