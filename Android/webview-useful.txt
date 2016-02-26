@@ -4,5 +4,10 @@ vistaWeb.setWebViewClient(new MyCustomWebViewClient(this));
 vistaWeb.clearCache(true);
 vistaWeb.clearHistory();
 vistaWeb.getSettings().setJavaScriptEnabled(true);
- wv.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
+ //wv.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR); This doesnt work anymore
+  wv.setInitialScale(1);
+        wv.getSettings().setLoadWithOverviewMode(true);
+        wv.getSettings().setUseWideViewPort(true);
+        
+        
 vistaWeb.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
