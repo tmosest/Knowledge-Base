@@ -1,0 +1,2 @@
+<tr ng-repeat="x in array1 track by $index">
+              	<td>{{array2[$index]}}</td>
