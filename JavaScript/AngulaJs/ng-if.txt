@@ -1,0 +1,4 @@
+ng-if="isMakingCall"
+
+
+Works on div tags doesn't work on p tags
