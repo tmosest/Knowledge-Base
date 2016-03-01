@@ -1,0 +1,3 @@
+SELECT  DATE_FORMAT(create_date, '%m/%d/%Y')
+FROM    mytable
+WHERE   create_date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()
