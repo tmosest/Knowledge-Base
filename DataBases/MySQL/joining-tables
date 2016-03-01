@@ -1,0 +1,7 @@
+SELECT w.firstName, w.lastName, j.jobName 
+from workerJobRel wjr 
+inner join 
+workers w on w.id = wjr.userId 
+inner join 
+jobs j on j.id = wjr.jobId 
+where wjr.jobId = 1
