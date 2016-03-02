@@ -1,0 +1,4 @@
+Put data-role="none" on any form items you don't want jQuery Mobile to style.
+
+<input type="text" name="foo" data-role="none" />
+<button type="button" id="bar" data-role="none">Button</button>
