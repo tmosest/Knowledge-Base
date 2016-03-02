@@ -1,0 +1,3 @@
+Great Resource:
+
+http://chiuki.github.io/advanced-android-textview
