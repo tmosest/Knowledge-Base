@@ -1,0 +1,1 @@
+To tint an image you must change the Render As property to Template Image in the assest folder in the image attribute section.
