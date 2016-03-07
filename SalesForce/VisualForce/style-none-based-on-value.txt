@@ -1,0 +1,5 @@
+<tr style="display: {!IF(ISBLANK(Field__c), 'none', 'table-row')};">
+    <td>Content of your cell</td>
+</tr>
+
+Just change the tr tags to what ever you need and change Field__c to the field we want to check.
