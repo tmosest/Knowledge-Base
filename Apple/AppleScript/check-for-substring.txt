@@ -1,1 +1,5 @@
 if theString contains "John" or "Jane" or "William" or "Bob"
+doThis()
+else
+doThat()
+end if
