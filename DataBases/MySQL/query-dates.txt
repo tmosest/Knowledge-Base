@@ -1,3 +1,9 @@
 SELECT  DATE_FORMAT(create_date, '%m/%d/%Y')
 FROM    mytable
 WHERE   create_date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()
+
+
+----------
+Query Dates from now to one year agon
+
+Date  >= DATE_SUB(NOW(),INTERVAL 1 YEAR)
