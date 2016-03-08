@@ -1,0 +1,5 @@
+$scope.$watch('fieldcontainer', function(newValue, oldValue) {
+  if (newValue !== oldValue) {
+    // do whatever you were going to do
+  }
+});
