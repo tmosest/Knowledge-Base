@@ -1,0 +1,4 @@
+Change this in Chart.js
+
+//var textWidth = ctx.measureText(string).width;
+				var textWidth = ctx.measureText(string).width * 1.05;
