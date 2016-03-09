@@ -1,0 +1,4 @@
+I'd like to replace all _ - . from a String with a white space. This is what I've came up with :
+
+var string = 'aaa_aaa-aaa.aaaa';
+string.replace(/_|-|\./g, ' ');
