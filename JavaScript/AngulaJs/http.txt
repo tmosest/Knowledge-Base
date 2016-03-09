@@ -1,0 +1,12 @@
+$http({
+ 					 method: 'GET',
+  					 url: '//www.example.com/?extra='+$scope.extra 
+				}).then(function successCallback(response) {
+					//var json = angular.toJson(response.data);
+					$scope.results = response.data.key;
+						//alert(json);
+  				}, function errorCallback(response) {
+    				// called asynchronously if an error occurs
+					  alert(response);
+    				// or server returns response with an error status.
+  				});	
