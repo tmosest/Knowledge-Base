@@ -1,0 +1,6 @@
+var string = "foo",
+    substring = "oo";
+console.log(string.indexOf(substring) > -1);
+
+
+Use string.index of returns -1 if non existant return the position of the substring other wise.
