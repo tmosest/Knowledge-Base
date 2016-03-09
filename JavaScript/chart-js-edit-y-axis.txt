@@ -1,0 +1,1 @@
+scaleLabel: "<%= Number(value).toFixed(2) %>",
