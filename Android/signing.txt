@@ -1,3 +1,5 @@
 Here is the offical doc on signing. Not too bad have to align file after you sign it.
 
 Don't need to align the file just look up a few folders.
+
+http://stackoverflow.com/questions/31150130/android-studio-is-not-generating-zip-aligned-apk
