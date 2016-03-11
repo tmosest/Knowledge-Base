@@ -1,0 +1,12 @@
+tell application "Mail"
+    check for new mail
+    repeat until (background activity count) = 0
+        delay 0.5 --wait until all new messages are in the box
+    end repeat
+    try
+        return subject of (first message of inbox whose read status is false and subject contains "New newsletter built by ")
+    end try
+end tell
+
+-- More about this at
+-- http://stackoverflow.com/questions/10890749/applescript-and-mail-app-checking-if-new-messages-contain-a-string
