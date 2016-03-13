@@ -1,0 +1,5 @@
+1) Volume
+2) Varience
+3) Velocity
+4) Veracity
+5) Valence
