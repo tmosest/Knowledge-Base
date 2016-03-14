@@ -1,0 +1,2 @@
+$blowfish_salt = "$2y$10$".bin2hex(openssl_random_pseudo_bytes(22));
+echo "<p>$blowfish_salt</p>";
