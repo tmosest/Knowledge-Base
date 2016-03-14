@@ -3,3 +3,4 @@
 3) Velocity
 4) Veracity
 5) Valence
+6) Value 
