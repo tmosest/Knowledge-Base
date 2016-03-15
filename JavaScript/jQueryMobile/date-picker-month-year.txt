@@ -1,0 +1,3 @@
+Example of month only 
+
+http://jsfiddle.net/DBpJe/7755/
