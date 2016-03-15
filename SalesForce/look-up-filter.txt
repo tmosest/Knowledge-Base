@@ -1,1 +1,3 @@
 https://help.salesforce.com/apex/HTViewHelpDoc?id=fields_lookup_filters_examples.htm&language=en
+
+https://help.salesforce.com/apex/HTViewHelpDoc?id=fields_lookup_filters_defining.htm&language=en
