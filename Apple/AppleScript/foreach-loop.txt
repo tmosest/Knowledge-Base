@@ -1,0 +1,4 @@
+set myList to {"Hello", "Goodbye", "I must be going"}
+repeat with theItem in myList
+  say theItem
+end repeat
