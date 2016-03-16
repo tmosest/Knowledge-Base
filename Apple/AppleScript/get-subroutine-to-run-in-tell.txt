@@ -1,0 +1,5 @@
+set name of anItem to my replaceText(name of anItem, SS, RS)
+
+
+
+USE THE MY MY MY MY
