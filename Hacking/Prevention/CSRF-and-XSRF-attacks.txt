@@ -1,1 +1,3 @@
 http://blog.codinghorror.com/preventing-csrf-and-xsrf-attacks/
+
+http://blog.codinghorror.com/cross-site-request-forgeries-and-you/
