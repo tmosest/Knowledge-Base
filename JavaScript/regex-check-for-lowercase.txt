@@ -1,0 +1,3 @@
+function hasLowerCase(str) {
+    return (/[a-z]/.test(str));
+}
