@@ -1,0 +1,16 @@
+SQL will fail if the query is too ambigous this will happen if the a field name is the same on multiple tables
+that are being joined together. (Id is a prime field for this to happen on)
+
+Method1: full table name
+
+  SELECT tbl_names.id, tbl_section.id, name, section
+  FROM tbl_names
+  JOIN tbl_section ON tbl_section.id = tbl_names.id 
+
+  
+  
+Method2: alias table name (I like this one)
+
+  SELECT n.id, s.id, n.name, s.section
+  FROM tbl_names n
+  JOIN tbl_section s ON s.id = n.id 
