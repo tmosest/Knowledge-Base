@@ -1,0 +1,32 @@
+=========================
+Counter in Angular: http://jsfiddle.net/ganarajpr/LQGE2/
+=========================
+<!doctype html>
+<html ng-app>
+<head>
+    <script src="http://code.angularjs.org/angular-1.0.0rc11.min.js"></script>
+
+</head>
+<body>
+<div ng-controller="AlbumCtrl">
+{{counter}}
+    <button ng-click="stop()">Stop</button>    
+</div>
+</body>
+</html>
+
+function AlbumCtrl($scope,$timeout) {
+    $scope.counter = 0;
+    $scope.onTimeout = function(){
+        $scope.counter++;
+        mytimeout = $timeout($scope.onTimeout,1000);
+    }
+    var mytimeout = $timeout($scope.onTimeout,1000);
+    
+    $scope.stop = function(){
+        $timeout.cancel(mytimeout);
+    }
+            
+}
+
+
