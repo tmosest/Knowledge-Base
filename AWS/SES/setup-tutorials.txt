@@ -1,0 +1,15 @@
+============================================================
+Setup private email servier on ec2 instance
+============================================================
+
+https://www.elprespufferfish.net/blog/aws,mail/2015/09/03/mail-server-ec2.html
+
+============================================================
+Configuring Email Client
+============================================================
+
+http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-email-client.html
+
+============================================================
+Senfin Email Client
+============================================================
