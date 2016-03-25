@@ -1,0 +1,6 @@
+==============================
+  Just add data-ajax="false" as shown below!!
+  http://stackoverflow.com/questions/8403242/php-header-and-jquery-mobile
+==============================
+
+<a href="logout.php" data-role="none" data-ajax="false" class="ui-btn-left">
