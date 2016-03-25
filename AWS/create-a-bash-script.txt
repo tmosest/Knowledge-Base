@@ -1,0 +1,13 @@
+http://linuxcommand.org/wss0010.php
+
+//To create run:
+sudo vi my_script
+
+//Paste this example
+#!/bin/bash
+# My first script
+
+echo "Hello World!"
+
+//Then run it with
+./my_script
