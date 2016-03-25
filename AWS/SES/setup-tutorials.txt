@@ -13,3 +13,12 @@ http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-email-client.html
 ============================================================
 Senfin Email Client
 ============================================================
+
+
+http://www.binarytides.com/postfix-mail-forwarding-debian/
+
+https://support.rackspace.com/how-to/basic-settings-in-the-postfix-maincf-file/
+
+https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-email-client.html
+
+https://www.elprespufferfish.net/blog/aws,mail/2015/09/03/mail-server-ec2.html
