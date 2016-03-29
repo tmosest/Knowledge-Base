@@ -1,3 +1,4 @@
+// Simple function that returns the value of a cookie based on its name
 function getCookie(cname) {
 	var name = cname + "=";
 	var ca = document.cookie.split(';');
