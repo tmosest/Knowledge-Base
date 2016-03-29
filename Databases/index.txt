@@ -1,0 +1,3 @@
+Good tutorial on Indexes:
+
+http://www.programmerinterview.com/index.php/database-sql/what-is-an-index/
