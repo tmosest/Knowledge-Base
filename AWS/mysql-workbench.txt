@@ -1,0 +1,14 @@
+======================================================================================================================================================================================
+Tutorial on how to hookup MySQL Workbench to AWS EC2 Instance
+
+http://domino.symetrikdesign.com/2010/10/07/how-to-create-a-mysql-workbench-connection-to-amazon-ec2-server/
+======================================================================================================================================================================================
+
+Connection Name: My Dev Site
+Connection Method:Connection Method – You must use Standard TCP/IP over SSH. This creates an SSH tunnel first, then establishes the MySQL connection over the SSH tunnel.
+SSH Hostname: ec2-46-51-137-37.eu-west-1.computer.amazonaws.com – this is the public DNS name of your Amazon Instance.
+SSH Username: (ec2-user) Depending on the operating system you are using, this will be either root, ubuntu, or another SSH user you have created.
+SSH Key File:/.ec2/mydevsite_com.pem – This is the directory and filename of the keypair file that Amazon supplies you when creating your account and instances. In my case, I saved the keypair file as mydevsite_com.pem in the .ec2 directory because the .ec2 files are also where you install the EC2 tools on Mac OS X.
+MySQL Hostname:127.0.0.1 – I could not get this to work with the public DNS name, it only worked for me with 127.0.0.1
+MySQL server port:3306 – which is the default
+username:root – this is the MySQL username. You may want to use another user besides root on your system. - See more at: http://domino.symetrikdesign.com/2010/10/07/how-to-create-a-mysql-workbench-connection-to-amazon-ec2-server/#sthash.ksaF8MSl.dpuf
