@@ -125,3 +125,22 @@ Setting up ftp in DreamWeaver
 2) In the top menu click Site -> New Site or Site -> Manage Sites
 
 3) .....
+
+=================================================================
+Setting up ftp in Sublime
+=================================================================
+
+1) Download and install Sublime SFTP
+
+     https://wbond.net/sublime_packages/sftp/usage
+     
+2) Create an sftp-config.json file
+
+3) Make sure the following are set
+
+"type": "ftp",
+"host": "example.com",
+"user": "username",
+"password": "password",
+"port": "21",
+"remote_path": "/",
