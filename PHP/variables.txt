@@ -1,0 +1,3 @@
+Php variables are easy. 
+
+$variable = value;
