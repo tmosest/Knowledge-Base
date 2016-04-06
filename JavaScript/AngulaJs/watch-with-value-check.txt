@@ -1,0 +1,5 @@
+$scope.$watch('type', function (newValue, oldValue) {
+					if (newValue !== oldValue) {
+						generate_graphs($scope, $http);
+					}
+});
