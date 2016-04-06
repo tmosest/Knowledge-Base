@@ -9,4 +9,14 @@ $http({
     				// called asynchronously if an error occurs
 					  alert(response);
     				// or server returns response with an error status.
-  				});	
+  				});
+  				
+================================
+	With params
+================================
+
+$http({
+  url: user.details_path, 
+  method: "GET",
+  data: {user_id: user.id}
+ });
