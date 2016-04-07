@@ -8,6 +8,8 @@ Another Better One Hopefully
 
 https://avix.co/blog/creating-your-own-mail-server-amazon-ec2-postfix-dovecot-postgresql-amavis-spamassassin-apache-and-squirrelmail-part-1/
 
+https://avix.co/blog/server-hosting/
+
 ============================================================
 Configuring Email Client
 ============================================================
