@@ -1,0 +1,5 @@
+<a href="#demo" data-toggle="collapse">Collapsible</a>
+
+<div id="demo" class="collapse in">
+Lorem ipsum dolor text....
+</div>
