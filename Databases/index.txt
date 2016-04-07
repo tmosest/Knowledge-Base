@@ -1,3 +1,7 @@
 Good tutorial on Indexes:
 
 http://www.programmerinterview.com/index.php/database-sql/what-is-an-index/
+
+Good tutorial on Database Normalization:
+
+http://www.studytonight.com/dbms/database-normalization.php
