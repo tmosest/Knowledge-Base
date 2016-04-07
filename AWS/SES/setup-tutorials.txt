@@ -10,6 +10,8 @@ https://avix.co/blog/creating-your-own-mail-server-amazon-ec2-postfix-dovecot-po
 
 https://avix.co/blog/server-hosting/
 
+https://github.com/Avix101/Mail-Server-Script
+
 ============================================================
 Configuring Email Client
 ============================================================
