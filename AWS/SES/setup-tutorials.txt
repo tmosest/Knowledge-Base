@@ -4,6 +4,10 @@ Setup private email servier on ec2 instance
 
 https://www.elprespufferfish.net/blog/aws,mail/2015/09/03/mail-server-ec2.html
 
+Another Better One Hopefully
+
+https://avix.co/blog/creating-your-own-mail-server-amazon-ec2-postfix-dovecot-postgresql-amavis-spamassassin-apache-and-squirrelmail-part-1/
+
 ============================================================
 Configuring Email Client
 ============================================================
