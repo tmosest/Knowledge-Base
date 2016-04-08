@@ -18,6 +18,10 @@ https://avix.co/blog/server-hosting/
 
 https://github.com/Avix101/Mail-Server-Script
 
+
+How I finally got EC2 PostFix working see the bottom of this:
+http://stackoverflow.com/questions/18318789/linux-postfix-dovecot-554-relay-access-denied
+
 ============================================================
 Configuring Email Client
 ============================================================
