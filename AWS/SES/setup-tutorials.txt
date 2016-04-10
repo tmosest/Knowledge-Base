@@ -40,3 +40,12 @@ https://support.rackspace.com/how-to/basic-settings-in-the-postfix-maincf-file/
 https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-email-client.html
 
 https://www.elprespufferfish.net/blog/aws,mail/2015/09/03/mail-server-ec2.html
+
+============================================================
+
+http://stackoverflow.com/questions/18318789/linux-postfix-dovecot-554-relay-access-denied
+
+For my postfix 2.6.6 on Amazon AWS EC2, it turned out that i had wrong configuration of "mydestination" and "relay_domains" settings in main.cf. Correct values (ones which worked for me), were:
+
+mydestination = $myhostname, $mydomain, localhost
+relay_domains = $mydestination
