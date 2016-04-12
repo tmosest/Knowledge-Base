@@ -1,0 +1,27 @@
+============================================
+Guide on how to add more PhpMyAdmin users.
+============================================
+
+1) SSH into EC2
+
+2) Then:
+
+  mysql -u root -p
+  
+3) Now type your root password to open mysql prompt
+
+4) The following command creates a new user with a passcode:
+
+  CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+
+5) Now we have a new user with now priviledges.
+
+6) To give them all permissions on all datbases do the following:
+
+  GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'localhost'
+
+7) If not use one of the following examples:
+
+  http://dev.mysql.com/doc/refman/5.7/en/adding-users.html
+  
+  http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html
