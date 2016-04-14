@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/60174/how-can-i-prevent-sql-injection-in-php
+
+https://phpdelusions.net/pdo
+
+http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers
