@@ -1,1 +1,3 @@
 https://docs.angularjs.org/guide/services
+
+https://egghead.io/lessons/angularjs-sharing-data-between-controllers
