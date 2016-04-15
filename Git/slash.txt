@@ -1,0 +1,1 @@
+https://git-scm.com/book/no-nb/v1/Git-Tools-Stashing
