@@ -12,4 +12,6 @@ Windows Computers
 Mac
 ==========================
 
+1) Open Terminal
+
 
