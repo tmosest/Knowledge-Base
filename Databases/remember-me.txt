@@ -9,3 +9,7 @@ https://github.com/dropbox/zxcvbn
 Great article on timing attacks:
 
 http://blog.ircmaxell.com/2014/11/its-all-about-time.html
+
+Original Source:
+
+http://stackoverflow.com/questions/244882/what-is-the-best-way-to-implement-remember-me-for-a-website
