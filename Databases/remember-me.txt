@@ -1,0 +1,11 @@
+Excellent tutorial on making remember me login work:
+
+https://paragonie.com/blog/2015/04/secure-authentication-php-with-long-term-persistence#title.2
+
+Great password strength checker:
+
+https://github.com/dropbox/zxcvbn
+
+Great article on timing attacks:
+
+http://blog.ircmaxell.com/2014/11/its-all-about-time.html
