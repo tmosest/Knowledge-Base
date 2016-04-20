@@ -53,7 +53,7 @@ if ($uploadOk == 0) {
 </head>
 
 <body>
-<form action="fileupload.php" method="post" enctype="multipart/form-data">
+<form action="example1.php" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload Image" name="submit">
