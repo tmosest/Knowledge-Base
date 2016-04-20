@@ -28,7 +28,6 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
             
             element.bind('change', function(){
                 scope.$apply(function(){
-					alert('bound');
                     modelSetter(scope, element[0].files[0]);
                 });
             });
@@ -45,7 +44,7 @@ myApp.service('fileUpload', ['$http', function ($http) {
             headers: {'Content-Type': undefined}
         })
         .success(function(r){
-			alert(r.data);
+	   alert(r);
         })
         .error(function(){
         });
