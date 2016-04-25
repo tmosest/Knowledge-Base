@@ -16,4 +16,8 @@ Mac
 
 2) Use the cd command to move to the appropriate folder.
 
+3) Type the following command to change the pem key permissions:
+
+  chmod 400 my.pem
+
 
