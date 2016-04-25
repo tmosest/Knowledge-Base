@@ -14,4 +14,6 @@ Mac
 
 1) Open Terminal
 
+2) Use the cd command to move to the appropriate folder.
+
 
