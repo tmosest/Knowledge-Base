@@ -1,0 +1,3 @@
+Tutorials on Image Scaling:
+
+https://blogs.oracle.com/oswald/entry/scaling_images_in_php_done
