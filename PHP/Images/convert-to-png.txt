@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/8550015/convert-jpg-gif-image-to-png-in-php
+
+You just need imagepng() then. In fact it almost becomes a one-liner:
+
+imagepng(imagecreatefromstring(file_get_contents($filename)), "output.png");
+You would use $_FILES["id"]["tmp_name"] for the filename, and a different output filename obviously. But the image format probing itself would become redundant.
