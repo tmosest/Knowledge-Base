@@ -1,0 +1,14 @@
+========================================================================================================================
+  How to add custom images for 'save to home screen' options on phones
+========================================================================================================================
+
+http://www.cellcode.com/news/how-to-add-iphone-icon-to-your-website/
+
+<link rel="apple-touch-icon" href="apple-touch-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone-retina-display.png" />
+
+iPhone standard icon (57 x 57 pixels) apple-touch-icon-57×57-precomposed.png
+iPhone Retina Display icon (114 x 114 pixels) apple-touch-icon-114×114-precomposed.png
+iPad icon (72 x 72 pixels) apple-touch-icon-72×72-precomposed.png
+
