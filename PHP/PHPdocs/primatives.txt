@@ -1,0 +1,28 @@
+Primitives
+The PHPDoc Standard, and thus phpDocumentor, can refer to all primitive types in PHP.
+
+Here is a full listing;
+
+string
+A piece of text of an unspecified length.
+
+int or integer
+A whole number that may be either positive or negative.
+
+float
+A real, or decimal, number that may be either positive or negative.
+
+bool or boolean
+A variable that can only contain the state ‘true’ or ‘false’.
+
+array
+A collection of variables of unknown type. It is possible to specify the types of array members, see the chapter on arrays for more information.
+
+resource
+A file handler or other system resource as described in the PHP manual.
+
+null
+The value contained, or returned, is literally null. This type is not to be confused with void, which is the total absence of a variable or value (usually used with the @return tag).
+
+callable
+A function or method that can be passed by a variable, see the PHP manual for more information on callables.
