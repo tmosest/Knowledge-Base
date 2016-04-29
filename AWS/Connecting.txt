@@ -19,5 +19,7 @@ Mac
 3) Type the following command to change the pem key permissions:
 
   chmod 400 my.pem
+  
+4) ssh –v –i my.pem ec2-user@my-instance-dns 
 
 
