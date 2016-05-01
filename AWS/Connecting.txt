@@ -20,6 +20,6 @@ Mac
 
   chmod 400 my.pem
   
-4) ssh –v –i my.pem ec2-user@my-instance-dns 
+4) ssh –v –i my.pem ec2-user@my-instance-
 
-
+===========================
