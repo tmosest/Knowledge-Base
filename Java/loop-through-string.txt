@@ -1,0 +1,4 @@
+String str = "a really, really long string";
+for (int i = 0, n = str.length(); i < n; i++) {
+    char c = str.charAt(i);
+}
