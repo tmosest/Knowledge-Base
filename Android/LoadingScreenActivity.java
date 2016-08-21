@@ -61,7 +61,7 @@ public class LoadingScreenActivity extends Activity
                 synchronized (this)
                 {
 
-                    /*
+                    
                     //Initialize an integer (that will act as a counter) to zero
                     int counter = 0;
                     //While the counter is smaller than four
@@ -75,7 +75,7 @@ public class LoadingScreenActivity extends Activity
                         //This value is going to be passed to the onProgressUpdate() method.
                         publishProgress(counter*25);
                     }
-                    */
+                    
                 }
             }
             catch (InterruptedException e)
