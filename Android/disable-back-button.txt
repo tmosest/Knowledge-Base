@@ -1,0 +1,6 @@
+To disbale the back button override it and don't use it.
+
+@Override
+public void onBackPressed() {
+
+}
