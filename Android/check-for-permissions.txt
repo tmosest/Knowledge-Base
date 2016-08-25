@@ -1,0 +1,24 @@
+With Android 6.0 you no longer request permissions when the app is installed but only once the permission is needed. This will break apps that have assumed that you already have the permissions you need. Here is how to fix that.
+
+if (checkSelfPermission(Manifest.permission.CAMERA)
+        != PackageManager.PERMISSION_GRANTED) {
+
+    requestPermissions(new String[]{Manifest.permission.CAMERA},
+            MY_REQUEST_CODE);
+}
+
+
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (requestCode == MY_REQUEST_CODE) {
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // Now user should be able to use camera
+        }
+        else {
+            // Your app will not have this permission. Turn off all functions 
+            // that require this permission or it will force close like your 
+            // original question
+        }
+    }
+}
