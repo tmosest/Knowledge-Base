@@ -1,0 +1,27 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tyczj.bowling"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="11" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+
+        <activity android:name="Tabs">
+            <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+        </activity>
+
+        <activity android:name="BowlersList"></activity>
+    <provider android:name="com.tyczj.bowling.BowlersDB"
+        android:authorities="com.tyczj.bowling.bowlersdb">
+    </provider>
+    </application>
+
+
+
+</manifest>
