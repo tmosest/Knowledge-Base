@@ -18,5 +18,9 @@
   defined('ABSPATH') or die("You didn't say the magic word"); //Keeping out those pesky kids!
   
   
+  /*Or // Block direct requests
+if ( !defined('ABSPATH') )
+	die('-1');*/
+  
   
 ?>
