@@ -18,17 +18,21 @@ How to add android:
   
   cordova platforms add android
   
+Build Android project:
+
+  cordova build android
+  
 Build ios project:
 
   cordova build ios
   
-You can now double click the xcode project or:
+You can now double click the xcode project or workshop/platforms/ios:
 
   npm install -g ios-sim
   
   cordova emulate ios
   
-Build Android:
+Build Android from workshop/platforms/android:
 
   1) run on device: cordova run android
   
