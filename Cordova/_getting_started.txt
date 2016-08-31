@@ -1,0 +1,21 @@
+How to install it:
+
+  sudo npm install -g cordova
+  
+How to setup a new project:
+
+  cordova create workshop com.yourname.workshop Workshop
+  
+How to add ios support:
+
+  cd workshop
+  
+  cordova platforms add ios
+  
+How to add android:
+
+  cd workshop
+  
+  cordova platforms add android
+  
+  
