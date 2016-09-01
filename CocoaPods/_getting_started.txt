@@ -1,0 +1,32 @@
+Install:
+
+  sudo gem install cocoapods
+  
+Setup:
+
+  pod setup --verbose
+
+Init Pods:
+
+  cd ~/Path/To/Folder/Containing/
+  
+  pod init
+  
+  open -a Xcode Podfile
+  
+  Replace the two commented lines with the following:
+  
+  platform :ios, "8.0"
+  use_frameworks!
+  
+  This tells CocoaPods that your project is targeting iOS 8.0 and will be using frameworks instead of static libraries.
+  In order to use CocoaPods written in Swift, you must explicitly include use_frameworks! to opt into using frameworks. If you forget to include this, and CocoaPods detects you’re trying to use a Swift CocoaPod, you’ll get an error when you try to install the pods.
+  
+Pod install example:
+
+  It’s finally time to add your first dependency using CocoaPods. Add the following to your Podfile, inside the first target block:
+pod 'Alamofire', '2.0.2'
+
+  pod install
+  
+  https://www.raywenderlich.com/97014/use-cocoapods-with-swift
