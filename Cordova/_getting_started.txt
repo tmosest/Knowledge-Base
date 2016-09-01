@@ -38,4 +38,18 @@ Build Android from workshop/platforms/android:
   
   2) cordova emulate android
 
+Install some useful plugins:
 
+  cordova plugin add cordova-plugin-dialogs
+  cordova plugin add cordova-plugin-device
+  cordova plugin add cordova-plugin-console
+  cordova plugin add cordova-plugin-statusbar
+  
+Fix ios7 status bar issue:
+
+  StatusBar.overlaysWebView( false );
+  StatusBar.backgroundColorByHexString('#ffffff');
+  StatusBar.styleDefault();
+
+
+http://ccoenraets.github.io/cordova-tutorial/handlebars-templates.html
