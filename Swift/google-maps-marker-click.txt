@@ -1,0 +1,11 @@
+//Market Tap Function
+func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+    let myFirstButton = UIButton()
+    myFirstButton.setTitle("✸", forState: .Normal)
+    myFirstButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+    myFirstButton.frame = CGRectMake(15, -50, 300, 500)
+    myFirstButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+
+    self.view.addSubview(myFirstButton)
+    return true
+}
