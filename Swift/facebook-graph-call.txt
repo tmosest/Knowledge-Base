@@ -1,0 +1,11 @@
+ let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET")
+        req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
+            if(error == nil)
+            {
+                print("result \(result)")
+            }
+            else
+            {
+                print("error \(error)")
+            }
+        })
