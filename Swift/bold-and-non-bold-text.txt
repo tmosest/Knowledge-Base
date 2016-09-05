@@ -1,0 +1,25 @@
+func attributedString(from string: String, nonBoldRange: NSRange?) -> NSAttributedString {
+    let fontSize = UIFont.systemFontSize
+    let attrs = [
+        NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),
+        NSForegroundColorAttributeName: UIColor.black
+    ]
+    let nonBoldAttribute = [
+        NSFontAttributeName: UIFont.systemFont(ofSize: fontSize),
+    ]
+    let attrStr = NSMutableAttributedString(string: string, attributes: attrs)
+    if let range = nonBoldRange {
+        attrStr.setAttributes(nonBoldAttribute, range: range)
+    }
+    return attrStr
+}
+
+//in use
+
+let targetString = "Updated 2012/10/14 21:59 PM"
+let range = NSMakeRange(7, 12)
+
+let label = UILabel(frame: CGRect(x:0, y:0, width:350, height:44))
+label.backgroundColor = UIColor.white
+label.attributedText = attributedString(from: targetString, nonBoldRange: range)
+label.sizeToFit()
