@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/30276503/where-to-find-a-clear-explanation-about-swift-alert-uialertcontroller
